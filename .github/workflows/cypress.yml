@@ -31,7 +31,7 @@ jobs:
       # these containers will load balance all found tests among themselves
       - name: Cypress run
         uses: cypress-io/github-action@v4
-        if: ${{github.event.inputs.parallel == true}}
+        if: ${{github.event.inputs.parallel == 'true'}}
         with:
           record: ${{github.event.inputs.parallel}}
           parallel: ${{github.event.inputs.parallel}}
@@ -47,7 +47,7 @@ jobs:
       # these containers will load balance all found tests among themselves
       - name: Cypress run
         uses: cypress-io/github-action@v4
-        if: ${{(!github.event.inputs.parallel == false || github.event_name == 'push') && matrix.containers == '1'}}
+        if: ${{(github.event.inputs.parallel == 'false' || github.event_name == 'push') && matrix.containers == '1'}}
         env:
           # pass the Dashboard record key as an environment variable
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
