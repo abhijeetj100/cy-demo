@@ -3,7 +3,7 @@ name: Cypress
 on:
   workflow_dispatch:
     inputs:
-      record:
+      parallel:
         type: choice
         description: Record in Cypress Dashboard
         options: 
@@ -33,8 +33,8 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v4
         with:
-          record: ${{github.event.inputs.record}}
-          parallel: true
+          record: ${{github.event.inputs.parallel}}
+          parallel: ${{github.event.inputs.parallel}}
           group: Actions example
         env:
           # pass the Dashboard record key as an environment variable
