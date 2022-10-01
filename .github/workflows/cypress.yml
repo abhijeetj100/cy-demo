@@ -4,11 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       parallel:
-        type: choice
+        type: boolean
         description: Record in Cypress Dashboard
-        options: 
-        - false
-        - true
+        default: false
   
 
 jobs:
