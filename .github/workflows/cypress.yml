@@ -1,12 +1,13 @@
 name: Cypress
 
 on:
-  workflow_dispatch:
-    inputs:
-      parallel:
-        type: boolean
-        description: Record in Cypress Dashboard
-        default: false
+  - push
+  - workflow_dispatch:
+      inputs:
+        parallel:
+          type: boolean
+          description: Record in Cypress Dashboard
+          default: false
   
 
 jobs:
