@@ -1,6 +1,15 @@
 name: Cypress
 
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      record:
+        type: choice
+        description: Record in Cypress Dashboard
+        default: false
+        options: 
+        - true
+        - false
   
 
 jobs:
@@ -25,7 +34,7 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v4
         with:
-          record: true
+          record: ${{github.event.inputs.record}}
           parallel: true
           group: Actions example
         env:
