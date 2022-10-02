@@ -37,7 +37,7 @@ jobs:
         id: parse
         uses: tgamauf/cypress-parallel@v1
         with:
-          count-runners: ${{github.event.inputs.runners_count}}
+          count-runners: ${{github.event.inputs.runners_count || 5}}
   test:
     name: Cypress tests
     runs-on: ubuntu-latest
